@@ -334,10 +334,7 @@ graph.add_conditional_edges(
     {"weather": "weather", "pdf": "pdf"}
 )
 
-# graph.add_edge("weather", "llm")
-# graph.add_edge("pdf", "llm")
-# graph.add_edge("llm", "store")
-# graph.add_edge("store", END)
+
 
 # Weather results already have final text → skip llm
 graph.add_edge("weather", "store")
