@@ -74,17 +74,7 @@ class State(TypedDict):
     data: str
     response: str
 
-# --- Nodes ---
-# def decide_node(state: State) -> dict:
-#     query = state["query"].lower()
-#     if "weather" in query:
-#         return {"decision": "weather"}
-#     return {"decision": "pdf"}
 
-# def weather_node(state: State) -> dict:
-#     city = state["query"].lower().replace("weather", "").replace("in", "").strip()
-#     data = get_weather(city)
-#     return {"data": data}
 def call_llm(prompt: str) -> str:
     """Wrapper to handle both string and AIMessage returns safely."""
     try:
