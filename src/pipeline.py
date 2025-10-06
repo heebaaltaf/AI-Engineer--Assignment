@@ -241,13 +241,7 @@ Weather data:
 
 
 
-# def pdf_node(state: State) -> dict:
-#     if vectorstore is None:
-#         return {"data": "PDF not loaded"}
-#     retriever = vectorstore.as_retriever()
-#     docs = retriever.invoke(state["query"])  # ✅ modern API
-#     data = "\n".join([doc.page_content for doc in docs])
-#     return {"data": data}
+
 def pdf_node(state: State) -> dict:
     """Retrieve relevant text from PDF and generate an answer."""
     if vectorstore is None:
@@ -292,32 +286,7 @@ def llm_node(state: State) -> dict:
 
 from qdrant_client.http import models as qmodels
 
-# def embed_store_node(state: State) -> dict:
-#     """Embed the response text and upsert it into Qdrant manually."""
-#     embedding = embeddings.embed_query(state["response"])
-#     point_id = abs(hash(state["response"])) % (10**12)
-#     payload = {"text": state["response"]}
 
-#     # Ensure collection exists before inserting
-#     try:
-#         qdrant_client.get_collection("responses")
-#     except Exception:
-#         qdrant_client.recreate_collection(
-#             collection_name="responses",
-#             vectors_config=qmodels.VectorParams(size=len(embedding), distance=qmodels.Distance.COSINE)
-#         )
-
-#     qdrant_client.upsert(
-#         collection_name="responses",
-#         points=[
-#             qmodels.PointStruct(
-#                 id=point_id,
-#                 vector=embedding,
-#                 payload=payload,
-#             )
-#         ],
-#     )
-#     return {}
 
 def embed_store_node(state: State) -> dict:
     """Embed the response or data text and upsert it into Qdrant manually."""
