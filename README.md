@@ -18,7 +18,7 @@ This project demonstrates a simple AI pipeline using LangChain, LangGraph, and L
 1. **Clone the repository**:
    ```bash
    git clone <repository-url>
-   cd neura_dynamics
+   cd AI-Engineer--Assignment
    ```
 
 2. **Install dependencies**:
