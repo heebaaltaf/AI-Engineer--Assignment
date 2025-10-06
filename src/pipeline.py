@@ -36,7 +36,7 @@ llm = OpenAI(
     temperature=0,
     openai_api_key=openai_key
 )
-print(llm.invoke("what is apple?")) # warm up
+
 
 embeddings = OpenAIEmbeddings(openai_api_key=os.getenv("OPENAI_API_KEY"))
 qdrant_client = QdrantClient(":memory:")  # in-memory DB for demo
@@ -209,12 +209,13 @@ User query:
 You are a helpful and friendly weather assistant.
 
 Below is real weather data fetched from a live API.
-Your goal is to generate a short, natural, *accurate* weather summary for the user.
+Your goal is to generate detailed natural, *accurate* weather summary for the user.
 
 Guidelines:
+-Start with the location name {location_str}.
 - Start the response naturally.
 - Mention the temperature in °C, describe all the weather condition, and include humidity or wind speed if available.
-- Keep it conversational but factual — no placeholders, instructions, or meta-comments.
+- Keep it factual — no placeholders, instructions, or meta-comments.
 - Do NOT say things like "complete the task", "as an AI", or any technical phrases.
 
 
